@@ -3,16 +3,16 @@ import os
 class UserIn:
     def __init__(self):
         self.date = input("Enter the date in the form year/month/day [e.g. 220510]: ").strip()
-        self.worm_type = input("What Strain of worm is being imaged today?").strip().upper()
+        self.worm_type = input("What Strain of worm is being imaged today? ").strip().upper()
         self.strains = []
-        self.strain = input("What strain(s) of bacteria are being imaged today?").strip()
+        self.strain = input("What strain(s) of bacteria are being imaged today? ").strip()
         while(not self.strain.strip().lower().startswith("ex") or self.strain == ""):
               self.strains.append(self.strain)
-              self.strain = input("Enter another strain if desired, or type (ex)it if all strains have been entered")
+              self.strain = input("Enter another strain if desired, or type (ex)it if all strains have been entered: ")
         
-        self.temp = int(input("What temperature were these worms grown up at? (please enter as an integer [e.g. 25])").strip())
-        self.N = int(input("What N will you be collecting on each group today? (please enter as an integer [e.g. 25])").strip())
-        self.name = input("What will your file names be?")
+        self.temp = int(input("What temperature were these worms grown up at? (please enter as an integer [e.g. 25]): ").strip())
+        self.N = int(input("What N will you be collecting on each group today? (please enter as an integer [e.g. 25]): ").strip())
+        self.name = input("What will your file names be? ")
 
     def make_dirs(self):
         os.mkdir(self.date)
