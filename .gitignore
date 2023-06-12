@@ -1,3 +1,4 @@
 templates
 dev
 **/__pycache__
+.*
