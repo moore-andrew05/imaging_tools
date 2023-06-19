@@ -2,3 +2,5 @@ templates
 dev
 **/__pycache__
 .DS_Store
+.vscode
+**/*.svg
