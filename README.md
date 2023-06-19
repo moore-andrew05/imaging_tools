@@ -5,4 +5,6 @@ This repository contains some tools for my live bacterial imaging, especially on
 
 ### TODO
 
-I have built up all the tools to do the full analysis, just need to write all the metadata to the database, should probably look into sqllite or something if I have time because reading from pickle isn't going to be ideal for people who want to use R or another language to do analysis on the data. 
+Set up sqlite database
+
+package tools into a python package to make them easier to use going forward. 

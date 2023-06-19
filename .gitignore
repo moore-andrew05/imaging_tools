@@ -2,3 +2,6 @@ templates
 dev
 **/__pycache__
 .DS_Store
+LIVE_BACTERIAL_IMAGING
+.vscode
+test_files
