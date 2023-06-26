@@ -33,8 +33,6 @@ class rme_parser:
                     else:
                         common = line.split(sep=",")
                     
-
-
                 if level == 2:
                     if line.strip().startswith(self.PARSE2):
                         self.infos.append(data)
@@ -47,7 +45,6 @@ class rme_parser:
                     else:
                         data.append([*common, *line.split(sep=",")])
                     
-
                 if line.strip().startswith(self.PARSE1):
                     level = 1
                     first_line = True
