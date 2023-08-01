@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import IPython.display as ipd
+import time
 
 class NeuralNetwork:
     def __init__(self, n_inputs, n_hidden_units_per_layer,  n_outputs_or_class_names):
@@ -32,6 +34,12 @@ class NeuralNetwork:
             for layeri, W in enumerate(self.weights):
                 print(f'Layer {layeri + 1}: {W.shape=}')
 
+        # Target Dictionary 
+        self.target_dict = {
+            "JUB66_RFP": 0,
+            "JUB66_RFP_IN_CEMBIO": 1,
+            "MK_JUB66_RFP_IN_JUB66": 2
+        }
         
         #IV is saved as a class variables so it can easily be shared by fprop and bprop. 
         self.iv = None
@@ -109,6 +117,14 @@ class NeuralNetwork:
                 self.percent_correct_trace.append(self.percent_correct(T, Y_classes))
             else:
                 self.mse_trace.append(self._E(X, T))
+
+            if (epoch + 1) % 20 == 0:
+                ipd.clear_output(wait=True)
+                fig = self.plot_clusters(T)
+                plt.show()
+                ipd.display(fig)
+                time.sleep(1)
+            
         self.epochs = n_epochs
 
     def use(self, X, standardized=False):
@@ -226,3 +242,21 @@ class NeuralNetwork:
         plt.title("% Correct Trace")
         plt.xlabel("Epoch #")
         plt.ylabel("% Correct")
+
+
+
+    def plot_clusters(self, T):
+        index = 0
+
+        for i, H in enumerate(self.Hs):
+            if H.shape[1] == 2:
+                index = i
+                break
+
+
+
+        scatter = plt.scatter(self.Hs[index][:,0], self.Hs[index][:,1], c=T[:,0])
+        plt.legend(handles=scatter.legend_elements()[0], 
+           title="feed", labels=self.target_dict.keys());
+        return scatter
+    
