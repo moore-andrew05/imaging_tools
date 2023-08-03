@@ -69,7 +69,7 @@ intensity: \n\
 *---*\n\n")
             for s in self.strains:
                 file.write("*--*\n")
-                file.write("date,strain,feed,temp\n")
+                file.write("date,strain,diet,temp\n")
                 file.write(f"{self.date},{self.worm_type},{s},{self.temp}\n")
                 file.write("*--*\n\n")
 

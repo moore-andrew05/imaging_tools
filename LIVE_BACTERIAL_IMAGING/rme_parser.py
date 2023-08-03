@@ -41,6 +41,9 @@ class rme_parser:
                         continue
                     if first_line:
                         self.header = [*self.header, *line.split(sep=",")]
+                        for i, w in enumerate(self.header):
+                            if w == "feed":
+                                self.header[i] = "diet"
                         first_line = False
                     else:
                         data.append([*common, *line.split(sep=",")])
